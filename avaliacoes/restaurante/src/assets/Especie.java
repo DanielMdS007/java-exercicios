@@ -1,0 +1,12 @@
+package assets;
+
+public class Especie extends Pagamento {
+
+    @Override
+    public void pagar() {
+
+        System.out.println("[Especie] Pagando...");
+
+    }
+
+}
