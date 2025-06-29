@@ -1,3 +1,10 @@
+import assets.model.Blast;
+import assets.model.Jedi;
+import assets.model.Pessoa;
+import assets.model.Saber;
+import assets.model.Sith;
+import assets.model.Weapon;
+
 public class App {
 
     public static void main(String[] args) {
