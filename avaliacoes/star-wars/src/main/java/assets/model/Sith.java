@@ -61,10 +61,5 @@ public class Sith extends Pessoa implements Force {
 
     }
 
-    @Override
-    public void imprime() {
-        System.out.println(super.getNome() + " " + super.getSobrenome());
-        System.out.println("Titulo: " + titulo);
-    }
-
+    
 }

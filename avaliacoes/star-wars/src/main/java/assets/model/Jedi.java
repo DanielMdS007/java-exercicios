@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Jedi extends Pessoa implements Force {
 
-    private String titulo = "Jedi";
+    private String titulo ;
     private ArrayList<Weapon> weapons;
 
     public Jedi() {
@@ -59,10 +59,6 @@ public class Jedi extends Pessoa implements Force {
 
     }
 
-    @Override
-    public void imprime() {
-        System.out.println(super.getNome() + " " + super.getSobrenome());
-        System.out.println("Titulo: " + titulo);
-    }
+    
 
 }

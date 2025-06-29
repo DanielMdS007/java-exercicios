@@ -20,12 +20,6 @@ public class Pessoa {
         this.sexo = sexo;
     }
 
-        public void imprime() {
-            System.out.println(this.nome);
-            System.out.println(this.sobrenome);
-            System.out.println(this.sexo);
-        }
-
     public String getNome() {
         return nome;
     }
