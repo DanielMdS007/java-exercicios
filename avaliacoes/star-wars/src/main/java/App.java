@@ -1,4 +1,4 @@
-import assets.model.Blast;
+/*import assets.model.Blast;
 import assets.model.Jedi;
 import assets.model.Pessoa;
 import assets.model.Saber;
@@ -50,3 +50,4 @@ public class App {
     }
 
 }
+    */
