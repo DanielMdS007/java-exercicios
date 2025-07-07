@@ -1,53 +1,45 @@
-/*import assets.model.Blast;
-import assets.model.Jedi;
-import assets.model.Pessoa;
-import assets.model.Saber;
-import assets.model.Sith;
-import assets.model.Weapon;
 
+import java.util.Scanner;
+
+import assets.controller.JediController;
+import assets.dao.JediDao;
 public class App {
-
     public static void main(String[] args) {
 
-        Pessoa p1 = new Pessoa();  
-        p1.setNome("Leia");
-        p1.setSobrenome("Organa");
-        p1.setSexo("Feminino");
-        p1.imprime();
-        Pessoa p2 = new Pessoa("Luke", "Skywalker", "Masculino");
-        p2.imprime();
+        JediDao jediDao = new JediDao();
+        jediDao.getAllJedis(); // Carrega os jedis do arquivo para a memória
+        JediController jediController = new JediController();
+        int decisao;
+        Scanner scanner = new Scanner(System.in);
+        //nesse jeito que estou fazendo, o jedi nao fica numa variavel permpétua, ele troca toda ver que um jedi é criado, eu acho que assim fica melhor caso tenha vários 
+        System.out.println("Bem vindo ao Star Wars Jedi Manager!, escolha uma opção: \n[1] Criar Jedi\n[2] Listar todos os Jedis\n[3] Buscar Jedi por nome\n[4] Remover Jedi");
+        decisao  = scanner.nextInt();
 
-        Jedi obiwan = new Jedi("Obi-Wan", "Kenobi");
-        obiwan.imprime();
-        obiwan.mindControl();
-        obiwan.levitation();
-
-        Sith vader = new Sith("Darth", "Vader");
-        vader.imprime();
-        vader.mindControl();
-        vader.levitation();
-
-        Saber sabre1 = new Saber("azul", 0);
-        Saber sabre2 = new Saber("vermelho", 0);
-        Blast blast = new Blast("laser", 0);
-
-        obiwan.getWeapons().add(sabre1.pickUp());
-        vader.getWeapons().add(sabre2.pickUp());
-        obiwan.getWeapons().add(blast.pickUp());
-
-        for(Weapon s: vader.getWeapons()) {
-            if(s.getClass().getName().equals("Saber")) {
-                ((Saber) s).slash();
-            }
+        switch (decisao) {
+            case 1:
+                jediController.createJedi();
+                break;
+            case 2:
+                jediController.showJedi();
+                break;
+            case 3:
+                
+                System.out.println("Digite o nome do Jedi que deseja buscar: ");
+                String nome = scanner.next();
+                jediController.getJediByName(nome);
+                break;
+            case 4:
+                jediDao.removeJedi();
+                break;
+            default:
+                System.out.println("Opção inválida!");
         }
+
         
-        for(Weapon s: obiwan.getWeapons()) {
-            if(s.getClass().getName().equals("Blast")) {
-                ((Blast) s).shot();
-                s.drop();
-            }
-        }
+
+
+
     }
 
 }
-    */
+    

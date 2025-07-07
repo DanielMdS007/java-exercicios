@@ -4,14 +4,17 @@ public class Pessoa {
     private String nome;
     private String sobrenome;
     private String sexo;
+    private String titulo;
 
     public Pessoa() {
  
     }
 
-    public Pessoa(String nome, String sobrenome) {
+    public Pessoa(String nome, String sobrenome, String sexo, String titulo) {
         this.nome = nome;
         this.sobrenome = sobrenome;
+        this.sexo = sexo;
+        this.titulo = titulo;
     }
 
     public Pessoa(String nome, String sobrenome, String sexo) {
@@ -43,5 +46,13 @@ public class Pessoa {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
+    public String getTitulo() {
+        return titulo;
+    }
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    
 
 }

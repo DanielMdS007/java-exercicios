@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Jedi extends Pessoa implements Force {
 
-    private String titulo ;
     private ArrayList<Weapon> weapons;
 
     public Jedi() {
@@ -12,17 +11,9 @@ public class Jedi extends Pessoa implements Force {
         this.weapons = new ArrayList<>();
     }
 
-    public Jedi(String nome, String sobrenome) {
-        super(nome, sobrenome);
+    public Jedi(String nome, String sobrenome, String sexo, String titulo) {
+        super(nome, sobrenome, sexo, titulo);
         this.weapons = new ArrayList<>();
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
 
@@ -59,6 +50,41 @@ public class Jedi extends Pessoa implements Force {
 
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getNome()).append(";")
+        .append(getSobrenome()).append(";")
+        .append(getSexo()).append(";")
+        .append(getTitulo()).append(";");
+
+        for (int i = 0; i < weapons.size(); i++) {
+            sb.append(weapons.get(i).toString());
+            if (i < weapons.size() - 1) {
+                sb.append(",");
+            }
+        }
+        return sb.toString();
+    }    
+    public static Jedi fromString(String linha) {
+        String[] partes = linha.split(";");
+        if (partes.length >= 4) {
+            // partes[0]: nome, partes[1]: sobrenome, partes[2]: sexo, partes[3]: titulo
+            Jedi jedi = new Jedi(partes[0], partes[1], partes[2], partes[3]);
+
+            /*if (partes.length == 5) {
+                String[] armas = partes[4].split(",");
+                ArrayList<Weapon> listaArmas = new ArrayList<>();
+                for (String nomeArma : armas) {
+                    listaArmas.add(Weapon.fromString(nomeArma));//totonhio precisar fazer isso
+                }
+                jedi.setWeapons(listaArmas);
+            }*/
+
+            return jedi;
+        }
+        return null;
+}
     
 
 }

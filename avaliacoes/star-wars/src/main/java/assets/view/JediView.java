@@ -20,7 +20,7 @@ public class JediView {
 
 
         public static String getJediSexo() {
-            System.out.println("Idade do Jedi: "  );
+            System.out.println("Sexo do Jedi: "  );
             String sexo = sc.nextLine();
             return sexo;
         }

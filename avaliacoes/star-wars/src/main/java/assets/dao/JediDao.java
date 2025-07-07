@@ -1,25 +1,64 @@
 package assets.dao;
 
-import assets.model.Jedi;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ArrayList; 
 import java.util.Scanner;
+
+import assets.model.Jedi;
+
 public class JediDao {
     private List<Jedi> jedis;
     private Scanner scanner;
+    private final String FILE_PATH = "file path do disco até a pasta 'txts' e o nome do txt"; //file path precisa literalmente ser o caminho absoluto, nesse commit eu nao vou botar para segurança
 
     public JediDao() {
         this.jedis = new ArrayList<>();
         this.scanner = new Scanner(System.in);
+        carregarOArquivo();
+    }
+    public void carregarOArquivo() {//privado pois só o construtor deve chamar
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            String linha;
+            while ((linha = reader.readLine()) != null) {
+                Jedi jedi = Jedi.fromString(linha);
+                if (jedi != null) {
+                    jedis.add(jedi);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Arquivo não encontrado. Será criado ao salvar.");
+        }
+    }
+
+public List<Jedi> getAllJedis() {
+     jedis.clear();
+     carregarOArquivo();
+      return new ArrayList<>(jedis);
+}
+
+ 
+    private void salvarNoArquivo() {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+        for (Jedi jedi : jedis) {
+            writer.write(jedi.toString());
+            writer.newLine();
+        }
+    } catch (IOException e) {
+        System.out.println("Erro ao salvar jedis: " + e.getMessage());
+    }
     }
 
     public void addJedi(Jedi jedi) {
         jedis.add(jedi);
+        salvarNoArquivo(); 
     }
 
-    public List<Jedi> getAllJedis() {
-        return jedis;
-    }
+
 
     public Jedi getJediByName(String name) {
         for (Jedi jedi : jedis) {
@@ -30,10 +69,14 @@ public class JediDao {
         return null;
     }
     
-    public void removeJedi(String name) {
+    
+    public void removeJedi() {
+        System.out.print("Digite o nome do Jedi a ser removido: ");
+        String name = scanner.nextLine();
         jedis.removeIf(jedi -> jedi.getNome().equalsIgnoreCase(name));
+        salvarNoArquivo(); 
     }
 
-
+    
 
 }

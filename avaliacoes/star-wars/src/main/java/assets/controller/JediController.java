@@ -1,35 +1,62 @@
 package assets.controller;
 
 
-import java.util.Scanner;
+import java.util.List;
 
+import assets.dao.JediDao;
 import assets.model.Jedi;
 import assets.view.JediView;
 public class JediController {
-        private Jedi jedi;
-        private JediView  jediView;
-        public JediController() {
-        }
-        public void createJedi() {
-            Scanner sc = new Scanner(System.in);
-            String nome = JediView.getJediNome();
-            String sobrenome = JediView.getJediSobrenome();
-            String sexo = JediView.getJediSexo();
-            String titulo = JediView.getJediTitulo();
-            //String weapon = JediView.getJediWeapons();
-            
-            this.jedi = new Jedi(nome, sobrenome, sexo, titulo);
-            //this.jedi.setWeapons(weapon);
-        }
-        public JediController(Jedi jedi, JediView jediView) {
-            this.jedi = jedi;
-            this.jediView = jediView;
-        }
+    private JediDao jediDao;
+    private JediView jediView;
+    private Jedi jedi;
+    
+    public JediController() {
+        this.jediDao   = new JediDao();    // carrega jedis.txt em memória
+        this.jediView  = new JediView();
+    }
+    
+    public void createJedi() {
+        String nome      = jediView.getJediNome();
+        String sobrenome = jediView.getJediSobrenome();
+        String sexo      = jediView.getJediSexo();
+        String titulo    = jediView.getJediTitulo();
+
+        // 1) Cria o objeto
+        this.jedi = new Jedi(nome, sobrenome, sexo, titulo);
+        
+        // 2) Persiste no DAO
+        jediDao.addJedi(this.jedi);
+        jediView.displayJedi(this.jedi);
+    }
+
+        
         
         public void showJedi() {
-            jediView.displayJedi(jedi);
+                List<Jedi> jedis = jediDao.getAllJedis();
+                if (jedis.isEmpty()) {
+                    System.out.println("Nenhum Jedi cadastrado.");
+                } else {
+                    System.out.println("== Lista de Jedis ==");
+                    for (Jedi jedi : jedis) {
+                        System.out.println();
+                        System.out.println("Nome:"+jedi.getNome() + "\nSobre Nome: " + jedi.getSobrenome() + "\nSexo: "+jedi.getSexo()+" \nTitulo: " + jedi.getTitulo());
+
+                    }
+                }
         }
-        public void showAllJedis(Jedi[] jedis) {
+    public Jedi getJediByName(String name) {
+        Jedi jedi = jediDao.getJediByName(name);
+        if (jedi != null) {
+            jediView.displayJedi(jedi);
+        } else {
+            System.out.println("Jedi não encontrado.");
+        }
+        return jedi;
+
+    }
+
+    public void showAllJedis(Jedi[] jedis) {
             jediView.displayAllJedis(jedis);
         }
 
