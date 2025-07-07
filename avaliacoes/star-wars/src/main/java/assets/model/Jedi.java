@@ -72,14 +72,14 @@ public class Jedi extends Pessoa implements Force {
             // partes[0]: nome, partes[1]: sobrenome, partes[2]: sexo, partes[3]: titulo
             Jedi jedi = new Jedi(partes[0], partes[1], partes[2], partes[3]);
 
-            /*if (partes.length == 5) {
+            if (partes.length == 5) {
                 String[] armas = partes[4].split(",");
                 ArrayList<Weapon> listaArmas = new ArrayList<>();
                 for (String nomeArma : armas) {
-                    listaArmas.add(Weapon.fromString(nomeArma));//totonhio precisar fazer isso
+                    listaArmas.add(Weapon.fromString(nomeArma));//totonhio precisar fazer isso | feito padrinho
                 }
                 jedi.setWeapons(listaArmas);
-            }*/
+            }
 
             return jedi;
         }

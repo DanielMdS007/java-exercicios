@@ -1,4 +1,5 @@
 package assets.view;
+
 import java.util.Scanner;
 
 import assets.model.Weapon;

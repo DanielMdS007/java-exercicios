@@ -12,6 +12,7 @@ public class App {
         int decisao;
         Scanner scanner = new Scanner(System.in);
         //nesse jeito que estou fazendo, o jedi nao fica numa variavel permpétua, ele troca toda ver que um jedi é criado, eu acho que assim fica melhor caso tenha vários 
+        //Depois de criar o Sith, deixa que eu crio o menu para você :)
         System.out.println("Bem vindo ao Star Wars Jedi Manager!, escolha uma opção: \n[1] Criar Jedi\n[2] Listar todos os Jedis\n[3] Buscar Jedi por nome\n[4] Remover Jedi");
         decisao  = scanner.nextInt();
 
