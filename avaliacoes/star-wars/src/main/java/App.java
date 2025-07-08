@@ -1,36 +1,30 @@
 
 import java.util.Scanner;
 
-import assets.controller.JediController;
-import assets.dao.JediDao;
+import assets.Menu;
+
 public class App {
     public static void main(String[] args) {
-
-        JediDao jediDao = new JediDao();
-        jediDao.getAllJedis(); // Carrega os jedis do arquivo para a memória
-        JediController jediController = new JediController();
         int decisao;
         Scanner scanner = new Scanner(System.in);
         //nesse jeito que estou fazendo, o jedi nao fica numa variavel permpétua, ele troca toda ver que um jedi é criado, eu acho que assim fica melhor caso tenha vários 
         //Depois de criar o Sith, deixa que eu crio o menu para você :)
-        System.out.println("Bem vindo ao Star Wars Jedi Manager!, escolha uma opção: \n[1] Criar Jedi\n[2] Listar todos os Jedis\n[3] Buscar Jedi por nome\n[4] Remover Jedi");
+        System.out.println("Bem vindo ao Star Wars Manager!, escolha uma opção: \n[1] Jedi Manager\n[2] Sith Manager\n[3] Saber Manager\n[4] Blaster Manager");
         decisao  = scanner.nextInt();
+        Menu menu = new Menu();
 
         switch (decisao) {
             case 1:
-                jediController.createJedi();
+                menu.StartMenuJedi();
                 break;
             case 2:
-                jediController.showJedi();
+                menu.StartMenuSith();
                 break;
             case 3:
-                
-                System.out.println("Digite o nome do Jedi que deseja buscar: ");
-                String nome = scanner.next();
-                jediController.getJediByName(nome);
+                menu.StartMenuSaber();
                 break;
             case 4:
-                jediDao.removeJedi();
+                menu.StartMenuBlaster();
                 break;
             default:
                 System.out.println("Opção inválida!");

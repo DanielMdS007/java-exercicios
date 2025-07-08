@@ -26,34 +26,35 @@ public class Sith extends Pessoa implements Force {
 
     @Override
     public void mindControl() {
-        System.out.println("[Jedi]: Do what I wish");
+        System.out.println("[Sith]: Do what I wish");
     
     }
 
     @Override
     public void farseeing() {
-        System.out.println("[Jedi]: Visão amplificada");
+        System.out.println("[Sith]: Visão amplificada");
     }
 
     @Override
     public void telepath() {
-        System.out.println("[Jedi]: Telepatia ativada");
+        System.out.println("[Sith]: Telepatia ativada");
     }
 
     @Override
     public void levitation() {
-        System.out.println("[Jedi]: Levitação ativada");
+        System.out.println("[Sith]: Levitação ativada");
     }
 
     public void patience() {
 
     }
 
-    @Override
+     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getNome()).append(";")
         .append(getSobrenome()).append(";")
+        .append(getSexo()).append(";")
         .append(getTitulo()).append(";");
 
         for (int i = 0; i < weapons.size(); i++) {
@@ -70,19 +71,20 @@ public class Sith extends Pessoa implements Force {
             // partes[0]: nome, partes[1]: sobrenome, partes[2]: sexo, partes[3]: titulo
             Sith sith = new Sith(partes[0], partes[1], partes[2], partes[3]);
 
-            /*if (partes.length == 5) {
+            if (partes.length == 5) {
                 String[] armas = partes[4].split(",");
                 ArrayList<Weapon> listaArmas = new ArrayList<>();
                 for (String nomeArma : armas) {
-                    listaArmas.add(Weapon.fromString(nomeArma));//totonhio precisar fazer isso
+                    listaArmas.add(Weapon.fromString(nomeArma));//totonhio precisar fazer isso | feito padrinho
                 }
                 sith.setWeapons(listaArmas);
-            }*/
+            }
 
             return sith;
         }
         return null;
 }
+    
     
 
 }
