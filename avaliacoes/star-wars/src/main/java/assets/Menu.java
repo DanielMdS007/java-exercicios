@@ -19,7 +19,7 @@ public class Menu {
         int decisao;
         JediController jediController = new JediController();
 
-        System.out.println("Bem vindo ao Star Wars Jedi Manager!, escolha uma opção: \n[1] Criar Jedi\n[2] Listar todos os Jedis\n[3] Buscar Jedi por nome\n[4] Remover Jedi");
+        System.out.println("Bem vindo ao Star Wars Jedi Manager!, escolha uma opção: \n[1] Criar Jedi\n[2] Listar todos os Jedis\n[3] Buscar Jedi por nome\n[4] Remover Jedi\n[5] Sair");
         decisao  = scanner.nextInt();
 
         switch (decisao) {
@@ -38,6 +38,9 @@ public class Menu {
             case 4:
                 jediDao.removeJedi();
                 break;
+            case 5:
+                System.out.println("Saindo do Star Wars Jedi Manager...");
+                break;
             default:
                 System.out.println("Opção inválida!");
             }
@@ -49,8 +52,8 @@ public class Menu {
             Scanner scanner = new Scanner(System.in);
             SithController sithController = new SithController();
             int decisao;
-
-            System.out.println("Bem vindo ao Star Wars Sith Manager!, escolha uma opção: \n[1] Criar Sith\n[2] Listar todos os Siths\n[3] Buscar Sith por nome\n[4] Remover Sith");
+        
+            System.out.println("Bem vindo ao Star Wars Sith Manager!, escolha uma opção: \n[1] Criar Sith\n[2] Listar todos os Siths\n[3] Buscar Sith por nome\n[4] Remover Sith\n[5] Sair");
             decisao  = scanner.nextInt();
 
             switch (decisao) {
@@ -69,6 +72,9 @@ public class Menu {
                 case 4:
                     sithDao.removeSith();
                     break;
+                case 5:
+                    System.out.println("Saindo do Star Wars Sith Manager...");
+                    break;
                 default:
                     System.out.println("Opção inválida!");
                 }
@@ -81,7 +87,7 @@ public class Menu {
             SaberController saberController = new SaberController();
             int decisao;
 
-            System.out.println("Bem vindo ao Star Wars Saber Manager!, escolha uma opção: \n[1] Criar Saber\n[2] Listar todos os Sabers\n[3] Buscar Saber por cor\n[4] Remover Saber");
+            System.out.println("Bem vindo ao Star Wars Saber Manager!, escolha uma opção: \n[1] Criar Saber\n[2] Listar todos os Sabers\n[3] Buscar Saber por cor\n[4] Remover Saber\n[5] Sair");
             decisao  = scanner.nextInt();
 
             switch (decisao) {
@@ -97,7 +103,12 @@ public class Menu {
                     saberController.getSaberByColor(nome);
                     break;
                 case 4:
-                    //fazer o remover saber
+                    System.out.println("Digite o nome do Saber que deseja remover: ");
+                    nome = scanner.next();
+                    saberDao.removeSaber(nome);
+                    break;
+                case 5:
+                    System.out.println("Saindo do Star Wars Saber Manager...");
                     break;
                 default:
                     System.out.println("Opção inválida!");
@@ -111,7 +122,7 @@ public class Menu {
             BlastController blastController = new BlastController();
             int decisao;
 
-            System.out.println("Bem vindo ao Star Wars Blast Manager!, escolha uma opção: \n[1] Criar Blast\n[2] Listar todos os Blasts\n[3] Buscar Blast por nome\n[4] Remover Blast");
+            System.out.println("Bem vindo ao Star Wars Blast Manager!, escolha uma opção: \n[1] Criar Blast\n[2] Listar todos os Blasts\n[3] Buscar Blast por nome\n[4] Remover Blast\n[5] Sair");
             decisao  = scanner.nextInt();
 
             switch (decisao) {
@@ -122,13 +133,17 @@ public class Menu {
                     blastController.showBlasts();
                     break;
                 case 3:
-                    
-                    System.out.println("Digite o nome do Sith que deseja buscar: ");
+                    System.out.println("Digite o nome do Blaster que deseja buscar: ");
                     String nome = scanner.next();
                     blastController.getBlastByName(nome);
                     break;
                 case 4:
-                    //fazer o remover blast
+                    System.out.println("Digite o nome do Blaster que deseja remover: ");
+                    nome = scanner.next();
+                    blastDao.removeBlast(nome);
+                    break;
+                case 5:
+                    System.out.println("Saindo do Star Wars Blast Manager...");
                     break;
                 default:
                     System.out.println("Opção inválida!");
