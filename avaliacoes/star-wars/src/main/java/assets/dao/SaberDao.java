@@ -13,8 +13,7 @@ import assets.model.Saber;
 public class SaberDao {
     private List<Saber> sabers;
     private Scanner scanner;
-    private final String FILE_PATH = ""; // file path precisa literalmente ser o caminho absoluto, nesse commit eu nao vou botar para segurança
-
+    private final String FILE_PATH = "java-exercicios\\avaliacoes\\star-wars\\src\\main\\java\\assets\\dao\\txts\\sabers.txt"; 
     public SaberDao() {
         this.sabers = new ArrayList<>();
         this.scanner = new Scanner(System.in);

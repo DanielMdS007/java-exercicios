@@ -14,7 +14,7 @@ import assets.model.Jedi;
 public class JediDao {
     private List<Jedi> jedis;
     private Scanner scanner;
-    private final String FILE_PATH = "file path do disco até a pasta 'txts' e o nome do txt"; //file path precisa literalmente ser o caminho absoluto, nesse commit eu nao vou botar para segurança
+    private final String FILE_PATH = "java-exercicios\\avaliacoes\\star-wars\\src\\main\\java\\assets\\dao\\txts\\jedis.txt"; 
 
     public JediDao() {
         this.jedis = new ArrayList<>();
