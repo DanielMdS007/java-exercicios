@@ -60,6 +60,8 @@ public class SithController {
             sithView.displayAllSiths(siths);
         }
 
-
+    public void removeSith() {
+        sithDao.removeSith();
+    }
 
 }

@@ -8,21 +8,29 @@ import assets.view.SaberView;
 
 public class SaberController {
     private SaberDao saberDao;
-    private SaberView saberView;
+    private static SaberView saberView;
     private Saber saber;
 
     public SaberController() {
         this.saberDao = new SaberDao(); 
-        this.saberView = new SaberView();
+        SaberController.saberView = new SaberView();
     }
 
     public void createSaber() {
-        String descricao = saberView.getSaber();
-        String[] parts = descricao.split(" com dano ");
-        String cor = parts[0];
-        int dano = Integer.parseInt(parts[1]);
+        String dono = SaberView.getSaberOwner();
+        String cor = SaberView.getSaberColor();
+        String dano = SaberView.getSaberDamage();
         
-        this.saber = new Saber(cor, dano);
+        // Convert dano from String to int
+        int danoInt;
+        try {
+            danoInt = Integer.parseInt(dano);
+        } catch (NumberFormatException e) {
+            System.out.println("Dano inválido. Por favor, insira um número inteiro.");
+            return;
+        }
+        
+        this.saber = new Saber(cor, danoInt, dono);
         saberDao.addSaber(this.saber);
         SaberView.displaySaber(this.saber);
     }
@@ -33,21 +41,26 @@ public class SaberController {
             System.out.println("Nenhum Sabre cadastrado.");
         } else {
             System.out.println("== Lista de Sabres =="); 
-            for (Saber saber : sabers) {
+            for (Saber localSaber : sabers) {
                 System.out.println();
-                System.out.println("Cor: " + saber.getDescricao() + "\nDano: " + saber.getDano());
+                System.out.println("Cor: " + localSaber.getDescricao() + "\nDano: " + localSaber.getDano() 
+                                    + "\nDono: " + localSaber.getOwner());
             }
         }
     }
 
     public Saber getSaberByColor(String color) {
-        Saber saber = saberDao.getSaberByColor(color);
-        if (saber != null) {
-            SaberView.displaySaber(saber);
+        Saber catchSaber = saberDao.getSaberByColor(color);
+        if (catchSaber != null) {
+            SaberView.displaySaber(catchSaber);
         } else {
             System.out.println("Sabre não encontrado.");
         }
-        return saber;
+        return catchSaber;
+    }
+
+    public void removeSaber() {
+        saberDao.removeSaber();
     }
 
 }

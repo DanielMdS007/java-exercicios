@@ -31,7 +31,9 @@ public class WeaponDao {
         return null;
     }
 
-    public void removeWeapon(String description) {
-        weapons.removeIf(weapon -> weapon.getDescricao().equalsIgnoreCase(description));
+    public void removeWeapon() {
+        System.out.print("Digite o nome da Arma a ser removido: ");
+        String name = scanner.nextLine();
+        weapons.removeIf(weapon -> weapon.getDescricao().equalsIgnoreCase(name));
     }
 }

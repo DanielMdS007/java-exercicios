@@ -8,15 +8,18 @@ public class WeaponView {
     private static Scanner sc = new Scanner(System.in);
 
     public static String getWeapon() {
+        System.out.println("Nome do Dono da Arma: ");
+        String dono = sc.nextLine();
         System.out.println("Nome da Arma: ");
         String descricao = sc.nextLine();
         System.out.println("Dano da Arma: ");
         int dano = sc.nextInt();
 
-        return descricao + " com dano " + dano;
+        return dono + descricao + " com dano " + dano;
     }
 
     public static void displayWeapon(Weapon weapon) {
+        System.out.println("Dono: " + weapon.getOwner());
         System.out.println("Arma: " + weapon.getDescricao());
         System.out.println("Dano: " + weapon.getDano());
     }
@@ -25,6 +28,7 @@ public class WeaponView {
         for (Weapon weapon : weapons) {
             displayWeapon(weapon);
             System.out.println("-------------------");
+            System.out.println("Dono: " + weapon.getOwner());
             System.out.println("Arma: " + weapon.getDescricao());
             System.out.println("Dano: " + weapon.getDano());
             System.out.println("-------------------");

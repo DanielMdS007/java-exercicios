@@ -8,21 +8,27 @@ import assets.view.BlastView;
 
 public class BlastController {
     private BlastDao blastDao;
-    private BlastView blastView;
+    private static BlastView blastView;
     private Blast blast;
 
     public BlastController() {
         this.blastDao = new BlastDao(); 
-        this.blastView = new BlastView();
+        BlastController.blastView = new BlastView();
     }
 
     public void createBlast() {
-        String descricao = blastView.getBlast();
-        String[] parts = descricao.split(" com dano ");
-        String nome = parts[0];
-        int dano = Integer.parseInt(parts[1]);
+        String dono = BlastView.getBlastOwner();
+        String nome = BlastView.getBlastName();
+        String dano = BlastView.getBlastDamage();
+        int danoInt;
+        try {
+            danoInt = Integer.parseInt(dano);
+        } catch (NumberFormatException e) {
+            System.out.println("Dano inválido. Por favor, insira um número inteiro.");
+            return;
+        }
         
-        this.blast = new Blast(nome, dano);
+        this.blast = new Blast(nome, danoInt, dono);
         blastDao.addBlast(this.blast);
         BlastView.displayBlast(this.blast);
     }
@@ -33,21 +39,26 @@ public class BlastController {
             System.out.println("Nenhum Blaster cadastrado.");
         } else {
             System.out.println("== Lista de Blasters ==");
-            for (Blast blast : blasts) {
+            for (Blast localBlast : blasts) {
                 System.out.println();
-                System.out.println("Nome: " + blast.getDescricao() + "\nDano: " + blast.getDano());
+                System.out.println("Nome: " + localBlast.getDescricao() + "\nDano: " + localBlast.getDano() 
+                                    + "\nDono: " + localBlast.getOwner());
             }
         }
     }
 
     public Blast getBlastByName(String name) {
-        Blast blast = blastDao.getBlastByName(name);
-        if (blast != null) {
-            blastView.displayBlast(blast);
+        Blast catchBlast = blastDao.getBlastByName(name);
+        if (catchBlast != null) {
+            BlastView.displayBlast(catchBlast);
         } else {
             System.out.println("Blaster não encontrado.");
         }
-        return blast;
+        return catchBlast;
+    }
+
+    public void removeBlast() {
+        blastDao.removeBlast();
     }
 
 }

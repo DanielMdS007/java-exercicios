@@ -103,9 +103,7 @@ public class Menu {
                     saberController.getSaberByColor(nome);
                     break;
                 case 4:
-                    System.out.println("Digite o nome do Saber que deseja remover: ");
-                    nome = scanner.next();
-                    saberDao.removeSaber(nome);
+                    saberController.removeSaber();
                     break;
                 case 5:
                     System.out.println("Saindo do Star Wars Saber Manager...");
@@ -138,9 +136,7 @@ public class Menu {
                     blastController.getBlastByName(nome);
                     break;
                 case 4:
-                    System.out.println("Digite o nome do Blaster que deseja remover: ");
-                    nome = scanner.next();
-                    blastDao.removeBlast(nome);
+                    blastController.removeBlast();
                     break;
                 case 5:
                     System.out.println("Saindo do Star Wars Blast Manager...");

@@ -60,6 +60,10 @@ public class JediController {
             jediView.displayAllJedis(jedis);
         }
 
+    public void removeJedi() {
+        jediDao.removeJedi();
+    }
+
 
 
 }

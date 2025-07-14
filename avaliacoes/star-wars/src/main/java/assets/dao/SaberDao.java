@@ -13,7 +13,7 @@ import assets.model.Saber;
 public class SaberDao {
     private List<Saber> sabers;
     private Scanner scanner;
-    private final String FILE_PATH = "java-exercicios\\avaliacoes\\star-wars\\src\\main\\java\\assets\\dao\\txts\\sabers.txt"; 
+    private final String FILE_PATH = "avaliacoes\\star-wars\\src\\main\\java\\assets\\dao\\txts\\sabers.txt"; 
     public SaberDao() {
         this.sabers = new ArrayList<>();
         this.scanner = new Scanner(System.in);
@@ -65,11 +65,6 @@ public class SaberDao {
         return null;
     }
 
-    public void removeSaber(Saber saber) {
-        sabers.remove(saber);
-        salvarNoArquivo();
-    }
-
     public Saber getSaberByName(String name) {
         for (Saber saber : sabers) {
             if (saber.getDescricao().equalsIgnoreCase(name)) {
@@ -79,8 +74,8 @@ public class SaberDao {
         return null; 
     }
 
-    public void removeSaber(String description) {
-        System.out.println("Removendo Sabre: ");
+    public void removeSaber() {
+        System.out.println("Deseja remover qual Sabre: ");
         String name = scanner.nextLine();
         sabers.removeIf(saber -> saber.getDescricao().equalsIgnoreCase(name));
         salvarNoArquivo();

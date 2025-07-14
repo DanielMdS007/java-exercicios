@@ -66,8 +66,8 @@ public class BlastDao {
         return null;
     }
 
-    public void removeBlast(String description) {
-        System.out.println("Removendo Blaster: ");
+    public void removeBlast() {
+        System.out.println("Deseja remover qual Blaster: ");
         String name = scanner.nextLine();
         blasts.removeIf(blast -> blast.getDescricao().equalsIgnoreCase(name));
         salvarNoArquivo();
