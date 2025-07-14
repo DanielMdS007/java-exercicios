@@ -21,7 +21,7 @@ public class SithDao {
         this.scanner = new Scanner(System.in);
         carregarOArquivo();
     }
-    public void carregarOArquivo() {//privado pois só o construtor deve chamar
+    public void carregarOArquivo() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String linha;
             while ((linha = reader.readLine()) != null) {
@@ -31,7 +31,7 @@ public class SithDao {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Arquivo não encontrado. Será criado ao salvar.");
+
         }
     }
 

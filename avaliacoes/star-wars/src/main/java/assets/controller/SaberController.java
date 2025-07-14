@@ -21,7 +21,6 @@ public class SaberController {
         String cor = SaberView.getSaberColor();
         String dano = SaberView.getSaberDamage();
         
-        // Convert dano from String to int
         int danoInt;
         try {
             danoInt = Integer.parseInt(dano);

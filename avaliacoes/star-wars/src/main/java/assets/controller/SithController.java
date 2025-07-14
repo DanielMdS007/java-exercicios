@@ -12,7 +12,7 @@ public class SithController {
     private Sith sith;
     
     public SithController() {
-        this.sithDao   = new SithDao();    // carrega siths.txt em memória
+        this.sithDao   = new SithDao();
         this.sithView  = new SithView();
     }
     
@@ -21,11 +21,7 @@ public class SithController {
         String sobrenome = sithView.getSithSobrenome();
         String sexo      = sithView.getSithSexo();
         String titulo    = sithView.getSithTitulo();
-
-        // 1) Cria o objeto
         this.sith = new Sith(nome, sobrenome, sexo, titulo);
-        
-        // 2) Persiste no DAO
         sithDao.addSith(this.sith);
         sithView.displaySith(this.sith);
     }

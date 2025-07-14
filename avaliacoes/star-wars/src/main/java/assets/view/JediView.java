@@ -2,6 +2,7 @@ package assets.view;
 
 
 import java.util.Scanner;
+
 import assets.model.Jedi;
 public class JediView {
     private static Scanner sc = new Scanner(System.in);
@@ -29,19 +30,12 @@ public class JediView {
             String titulo = sc.nextLine();
             return titulo;
         }
-        /* 
-        public static Weapon getJediWeapons() {
-            System.out.println("Armas do Jedi: "   );
-            String weapon = sc.nextLine();
-            return weapon;
-        }*/
 
         public void displayJedi(Jedi jedi) {
             System.out.println("Nome: " + jedi.getNome());
             System.out.println("Sobrenome: " + jedi.getSobrenome());
             System.out.println("Sexo: " + jedi.getSexo());
             System.out.println("Titulo: " + jedi.getTitulo());
-            System.out.println("Arma: " + jedi.getWeapons());
         }
 
         public void displayAllJedis(Jedi[] jedis) {

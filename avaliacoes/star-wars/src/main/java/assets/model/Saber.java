@@ -12,14 +12,13 @@ public class Saber extends Weapon {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(getOwner()).append(" ").append(getDescricao()).append(" com dano ").append(getDano());
+        sb.append(getOwner()).append(";").append(getDescricao()).append(";").append(getDano()).append(";");
         return sb.toString();
     }
 
     public static Saber fromString(String linha) {
-        String[] partes = linha.split(" com dano ");
+        String[] partes = linha.split(";");
         if (partes.length >= 3) {
-            // partes[0]: dono, partes[1]: descricao, partes[2]: dano
             String dono = partes[0].trim();
             String descricao = partes[1].trim();
             int dano;

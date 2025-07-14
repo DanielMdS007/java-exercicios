@@ -36,7 +36,7 @@ public class Menu {
                 jediController.getJediByName(nome);
                 break;
             case 4:
-                jediDao.removeJedi();
+                jediController.removeJedi();
                 break;
             case 5:
                 System.out.println("Saindo do Star Wars Jedi Manager...");
@@ -70,7 +70,7 @@ public class Menu {
                     sithController.getSithByName(nome);
                     break;
                 case 4:
-                    sithDao.removeSith();
+                    sithController.removeSith();
                     break;
                 case 5:
                     System.out.println("Saindo do Star Wars Sith Manager...");
@@ -82,8 +82,10 @@ public class Menu {
 
         public void StartMenuSaber(){
             SaberDao saberDao = new SaberDao();
-            saberDao.getAllSabers(); // Carrega os sabers do arquivo para a memória
+            System.out.println("Carregando sabers do arquivo...");
+            saberDao.getAllSabers(); // Carrega os sabers do arquivo para a memória 
             Scanner scanner = new Scanner(System.in);
+                        System.out.println("Carregando sabers do arquivo...");
             SaberController saberController = new SaberController();
             int decisao;
 

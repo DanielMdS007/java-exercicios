@@ -21,7 +21,7 @@ public class BlastDao {
         carregarOArquivo();
     }
 
-    public void carregarOArquivo() { // privado pois só o construtor deve chamar
+    public void carregarOArquivo() { 
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String linha;
             while ((linha = reader.readLine()) != null) {

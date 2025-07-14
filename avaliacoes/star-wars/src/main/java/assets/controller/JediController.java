@@ -12,7 +12,7 @@ public class JediController {
     private Jedi jedi;
     
     public JediController() {
-        this.jediDao   = new JediDao();    // carrega jedis.txt em memória
+        this.jediDao   = new JediDao();    
         this.jediView  = new JediView();
     }
     
@@ -21,11 +21,7 @@ public class JediController {
         String sobrenome = jediView.getJediSobrenome();
         String sexo      = jediView.getJediSexo();
         String titulo    = jediView.getJediTitulo();
-
-        // 1) Cria o objeto
         this.jedi = new Jedi(nome, sobrenome, sexo, titulo);
-        
-        // 2) Persiste no DAO
         jediDao.addJedi(this.jedi);
         jediView.displayJedi(this.jedi);
     }

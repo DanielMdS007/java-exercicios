@@ -13,14 +13,14 @@ import assets.model.Saber;
 public class SaberDao {
     private List<Saber> sabers;
     private Scanner scanner;
-    private final String FILE_PATH = "avaliacoes\\star-wars\\src\\main\\java\\assets\\dao\\txts\\sabers.txt"; 
+    private final String FILE_PATH = "java-exercicios\\avaliacoes\\star-wars\\src\\main\\java\\assets\\dao\\txts\\sabers.txt"; 
     public SaberDao() {
         this.sabers = new ArrayList<>();
         this.scanner = new Scanner(System.in);
         carregarOArquivo();
     }
 
-    public void carregarOArquivo() { // privado pois só o construtor deve chamar
+    public void carregarOArquivo() { 
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String linha;
             while ((linha = reader.readLine()) != null) {

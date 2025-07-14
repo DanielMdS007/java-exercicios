@@ -30,19 +30,12 @@ public class SithView {
             String titulo = sc.nextLine();
             return titulo;
         }
-        /* 
-        public static Weapon getSithWeapons() {
-            System.out.println("Armas do Sith: "   );
-            String weapon = sc.nextLine();
-            return weapon;
-        }*/
 
         public void displaySith(Sith sith) {
             System.out.println("Nome: " + sith.getNome());
             System.out.println("Sobrenome: " + sith.getSobrenome());
             System.out.println("Sexo: " + sith.getSexo());
             System.out.println("Titulo: " + sith.getTitulo());
-            System.out.println("Arma: " + sith.getWeapons());
         }
 
         public void displayAllSiths(Sith[] siths) {
